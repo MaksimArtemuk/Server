@@ -9,10 +9,20 @@ Container< TypeDetails,TypeAllocator>::Container()
 
 template <class TypeDetails ,class TypeAllocator>
 Container< TypeDetails,TypeAllocator>::Container(Container &container){
-    detailsMap=allocator.allocate(container.countMainPartDetalis);
-   /*/ foreach (list<TypeDetails> *listv, container.detailsMap) {
-     detailsMap->push_back(listv);
-    }/*/
+ //   qDebug()<<"constrCopy";
+    countMainPartDetalis=container.countMainPartDetalis;
+    detailsMap=allocator.allocate(countMainPartDetalis);
+    andOrTree.assign(countMainPartDetalis,false);
+    containerName=container.containerName;
+//cout<<"beg"<<endl;
+typename list< list<TypeDetails> *> ::iterator itPrev=detailsMap->begin();
+    foreach (list<TypeDetails> * listv,*container.detailsMap)
+   {
+   **itPrev=*listv;
+     itPrev++;
+    }
+
+  // cout<<"end"<<endl;
 }
 
 template <class TypeDetails ,class TypeAllocator>
@@ -20,10 +30,7 @@ Container<TypeDetails ,TypeAllocator>::Container(QString name,int countEl):conta
     countMainPartDetalis(countEl)
 {
   detailsMap=   allocator.allocate(countEl);
-
-   //list<TypeDetails>t;
-  //  detailsMap.assign(countEl,t);
-    andOrTree.assign(countEl,false);
+  andOrTree.assign(countEl,false);
 }
 
 template <class TypeDetails ,class TypeAllocator>
@@ -32,7 +39,7 @@ void Container< TypeDetails ,TypeAllocator>::put(int numberSubtree,list<TypeDeta
      typename  list<bool >::iterator itPrev1=andOrTree.begin();
      advance(itPrev,numberSubtree);
      advance(itPrev1,numberSubtree);
-    *itPrev=&_list;
+    **itPrev=_list;
     *itPrev1=andOr;
 }
 
@@ -58,13 +65,24 @@ int Container< TypeDetails,TypeAllocator>::sizeSubtreeElements(int numberSubtree
     std::advance(itPrev,numberSubtree);
     return (*itPrev).size();
 }
-
+/*/
 template <class TypeDetails ,class TypeAllocator>
 void Container< TypeDetails,TypeAllocator>::showSubtree(int numberSubtree){
-    typename  list< list<TypeDetails> >::iterator itPrev;//=detailsMap->begin();
+    typename  list< list<TypeDetails>* >::iterator itPrev=detailsMap->begin();
     std::advance(itPrev,numberSubtree);
-    foreach (TypeDetails detail,*itPrev)
+    foreach (TypeDetails detail,**itPrev)
         cout<<detail<<endl;
 }
-/*/
+
+template <class TypeDetails ,class TypeAllocator>
+Container<TypeDetails ,TypeAllocator>::~Container(){
+   foreach (list<TypeDetails>*listv, *detailsMap) {
+
+       listv->clear();
+     //  delete listv;
+    }
+
+   detailsMap->clear();
+}
+
 template class Container<AbstractDetail,Allocator<AbstractDetail> >;

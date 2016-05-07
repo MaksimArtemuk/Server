@@ -18,7 +18,7 @@ private:
     TypeAllocator allocator;
     QString containerName;
     //Карта содержащая дерево
-long countMainPartDetalis;
+    long countMainPartDetalis;
     list<list<TypeDetails>* >*detailsMap;
     list<bool >andOrTree;
 
@@ -49,6 +49,7 @@ public:
     Container();
 
     Container(QString name,int countEl);
+    ~Container();
     Container(Container &container);
     /*/Положить детали в дерево по соответствующему ключу из перечисления
     * Ключ соответствкет поддереву - те главной части машины(тело,шина,трансмиссия)/*/

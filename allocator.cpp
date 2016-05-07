@@ -11,12 +11,11 @@ Allocator< TypeDetails>::Allocator()
 
 template <class TypeDetails>
 list<list<TypeDetails > *>* Allocator<TypeDetails>::allocate(int count){
-qDebug()<<"hello11:"<<count;
- list<TypeDetails >*t1;
+//qDebug()<<"hello11:"<<count;
 t=new list<list<TypeDetails > *>;
-t->assign(count,t1);
-//detailsMap.assign(countEl,t);
-//andOrTree.assign(countEl,false);
+for(int i=0;i<count;i++)
+   t->push_back(new list<TypeDetails>);
+
 return t;
 }
 template class Allocator<AbstractDetail> ;

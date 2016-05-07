@@ -15,7 +15,7 @@ int main(int argc, char ** argv)
     list<AbstractDetail> *buses1,*bodies1,*transmissions1;
 
     // Заполняем списки
-   /*/ buses.push_back(*new Bus("bus1"));
+    buses.push_back(*new Bus("bus1"));
     buses.push_back(*new Bus("bus2"));
     buses.push_back(*new Bus("bus3"));
 
@@ -25,8 +25,9 @@ int main(int argc, char ** argv)
 
     transmissions.push_back(*new Transmission("transmission1"));
     transmissions.push_back(*new Transmission("transmission1"));
-    transmissions.push_back(*new Transmission("transmission1"));/*/
-    Bus bas1("ba1"),bas2("ba2"),bas3("ba3");
+    transmissions.push_back(*new Transmission("transmission1"));
+
+    /*/Bus bas1("ba1"),bas2("ba2"),bas3("ba3");
     Body body1("bo1"),body2("bo2"),body3("bo3");
     Transmission tr1("tr1"),tr2("tr2"),tr3("tr3");
     buses.push_back(bas1);
@@ -39,7 +40,7 @@ int main(int argc, char ** argv)
 
         transmissions.push_back(tr1);
         transmissions.push_back(tr2);
-        transmissions.push_back(tr3);
+        transmissions.push_back(tr3);/*/
 
     qDebug()<<"--------Tr";
     container->put(PART_TRANSMISSION,transmissions);
@@ -64,17 +65,40 @@ int main(int argc, char ** argv)
     foreach (AbstractDetail detail,*transmissions1) {
        detail.getNameDetail();
     }
- /*/   Container<AbstractDetail>::iterator it=container->begin();
+  qDebug()<<"Test iterator b ";
+   Container<AbstractDetail>::iterator it=container->begin(),it2=container->begin();
+
  list<AbstractDetail>  v1=*it,v2;
-    v2=  *(++it);
-    qDebug()<<"--------";
+++it;
+++it2;
+/*/ ++it;
+ ++it;
+ ++it;
+ ++it;
+ ++it;
+ ++it;/*/
+ v2=  *(it);
+ if(it==it2)qDebug()<<"wwww";
+
+     qDebug()<<"--------";
     foreach (AbstractDetail detail,v1) {
        detail.getNameDetail();
     }
     foreach (AbstractDetail detail,v2) {
        detail.getNameDetail();
-    }/*/
+    }
+ //  (++it);
+ //  v2=   *  (++it);
+  // v2=   *  (++it);
+ //  v2=   * (++it);
 
+  //   v2=   *(--it); v2=   *(--it);
+ // v2=   *(--it);
+     qDebug()<<"--------111";
+  foreach (AbstractDetail detail,v2) {
+     detail.getNameDetail();
+  }   qDebug()<<"--------111";
+ qDebug()<<"Test iterator e ";
  Container< AbstractDetail,Allocator<AbstractDetail> > container1=*container;
  qDebug()<<"///////////////////////";
  container->showSubtree(PART_BODY);

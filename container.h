@@ -28,23 +28,44 @@ public:
     struct iterator {
     public:
         typename  list< list<TypeDetails>* >::iterator ptr;
-        iterator ( typename list<list< TypeDetails> *>::iterator ptr_):ptr(ptr_) {}
+        list< list<TypeDetails>* > *beginPos;
+        iterator ( typename list<list< TypeDetails> *>::iterator ptr_,list< list<TypeDetails>* >*_beginPos):
+            ptr(ptr_),beginPos(_beginPos){ }
         list< TypeDetails >& operator*() {  return **ptr; }
         // TypeDetails* operator->() { return ptr; }
-        list< TypeDetails> * operator++() { return (*++ptr);  }
-        list< TypeDetails> * operator--() { return (*--ptr);  }
+        list< TypeDetails> * operator++() {
+    typename   list< list< TypeDetails> *>::iterator endIt=beginPos->end(),locit;
+            locit=ptr;
+            if(++locit!=endIt)
+           {
+               qDebug()<<"norm";
+               ++ptr;
+           }
+           else{
+               qDebug()<<"not norm";
+           }
+            return (*ptr);
+        }
+        list< TypeDetails> * operator--() {
+     typename   list< list< TypeDetails> *>::iterator begIt=beginPos->begin(),locit;
+            locit=ptr;
+            if(--locit!=begIt)--ptr;
+            return (*ptr);
+        }
 
-    bool operator==(const iterator & other) const { return ptr == other.ptr; }
-    bool operator!=(const iterator & other) const { return !(*this == other); }
+    bool operator==(const iterator & other)  {
+     //   ptr++;
+        return ptr == other.ptr; }
+   // bool operator!=(const iterator & other) const { return !(*this == other); }
 
 
     };
 
     iterator begin () {
-        return detailsMap->begin();
+        return iterator(detailsMap->begin(),detailsMap);
     }
     iterator end () {
-        return detailsMap->end();
+        return iterator(detailsMap->end(),detailsMap);
     }
     Container();
 

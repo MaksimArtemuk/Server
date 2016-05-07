@@ -20,7 +20,7 @@ typename list< list<TypeDetails> *> ::iterator itPrev=detailsMap->begin();
    {
    **itPrev=*listv;
      itPrev++;
-    }
+   }
 
   // cout<<"end"<<endl;
 }
@@ -46,9 +46,29 @@ void Container< TypeDetails ,TypeAllocator>::put(int numberSubtree,list<TypeDeta
 template <class TypeDetails,class TypeAllocator>
 list<TypeDetails >* Container< TypeDetails,TypeAllocator>::get(int numberSubtree){
     typename  list< list<TypeDetails> *>::iterator itPrev=detailsMap->begin();
-    std::advance(itPrev,numberSubtree);
+    advance(itPrev,numberSubtree);
     return (*itPrev);
 }
+
+template <class TypeDetails ,class TypeAllocator>
+void Container< TypeDetails,TypeAllocator>::showSubtree(int numberSubtree){
+    typename  list< list<TypeDetails>* >::iterator itPrev=detailsMap->begin();
+    std::advance(itPrev,numberSubtree);
+    foreach (TypeDetails detail,**itPrev)
+        cout<<detail<<endl;
+}
+
+template <class TypeDetails ,class TypeAllocator>
+Container<TypeDetails ,TypeAllocator>::~Container(){
+   foreach (list<TypeDetails>*listv, *detailsMap) {
+
+       listv->clear();
+      //delete listv;
+    }
+//delete detailsMap;
+   detailsMap->clear();
+}
+
 /*/
 template <class TypeDetails,class TypeAllocator>
 const TypeDetails& Container< TypeDetails,TypeAllocator>::findByName(QString name){
@@ -66,23 +86,5 @@ int Container< TypeDetails,TypeAllocator>::sizeSubtreeElements(int numberSubtree
     return (*itPrev).size();
 }
 /*/
-template <class TypeDetails ,class TypeAllocator>
-void Container< TypeDetails,TypeAllocator>::showSubtree(int numberSubtree){
-    typename  list< list<TypeDetails>* >::iterator itPrev=detailsMap->begin();
-    std::advance(itPrev,numberSubtree);
-    foreach (TypeDetails detail,**itPrev)
-        cout<<detail<<endl;
-}
-
-template <class TypeDetails ,class TypeAllocator>
-Container<TypeDetails ,TypeAllocator>::~Container(){
-   foreach (list<TypeDetails>*listv, *detailsMap) {
-
-       listv->clear();
-     //  delete listv;
-    }
-
-   detailsMap->clear();
-}
 
 template class Container<AbstractDetail,Allocator<AbstractDetail> >;

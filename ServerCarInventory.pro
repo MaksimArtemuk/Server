@@ -6,7 +6,13 @@ SOURCES += \
     treewindow.cpp \
     detail.cpp \
     abstract_detail.cpp \
-    allocator.cpp
+    allocator.cpp \
+    body.cpp \
+    bus.cpp \
+    container.cpp \
+    salon.cpp \
+    suspension.cpp \
+    transmission.cpp
 
 HEADERS += \
     terminalwindow.h \
@@ -14,4 +20,10 @@ HEADERS += \
     aotree.h \
     detail.h \
     abstract_detail.h \
-    allocator.h
+    allocator.h \
+    body.h \
+    bus.h \
+    container.h \
+    salon.h \
+    suspension.h \
+    transmission.h

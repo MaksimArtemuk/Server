@@ -5,11 +5,13 @@ SOURCES += \
     terminalwindow.cpp \
     treewindow.cpp \
     detail.cpp \
-    abstract_detail.cpp
+    abstract_detail.cpp \
+    allocator.cpp
 
 HEADERS += \
     terminalwindow.h \
     treewindow.h \
     aotree.h \
     detail.h \
-    abstract_detail.h
+    abstract_detail.h \
+    allocator.h

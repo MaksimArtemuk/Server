@@ -5,9 +5,9 @@
 
 class Body : public AbstractDetail
 {
-  int srenght;
+  int strenght;
 public:
     Body(QString name);
-};
+   };
 
 #endif // BODY_H

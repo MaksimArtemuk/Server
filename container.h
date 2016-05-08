@@ -94,4 +94,5 @@ public:
     }
     bool operator==(Container &container);
 };
+void testContainer();
 #endif // CONTAINER_H

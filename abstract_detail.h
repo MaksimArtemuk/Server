@@ -20,19 +20,21 @@ public:
         qDebug()<<nameDetail;
         return nameDetail;
     }
+    virtual void m(){
+      qDebug()<<  "AbstractDetail";
+    }
   friend  int operator==(const  AbstractDetail&detail,const QString str)
     {
       return detail.nameDetail == str;
     }
-  friend  bool operator==(const  AbstractDetail&detail,const  AbstractDetail&detail1)
+  /*/ bool operator==(const  AbstractDetail&detail,const  AbstractDetail&detail1)
     {
       return detail.nameDetail == detail1.nameDetail;
-    }
-  friend  bool operator!=(const  AbstractDetail&detail,const  AbstractDetail&detail1)
+    }/*/
+ bool operator!=(const  AbstractDetail&detail)
     {
-     // qDebug()<<"***********";
-     qDebug()<<detail.nameDetail <<" "<<detail1.nameDetail<<endl;
-      return detail.nameDetail != detail1.nameDetail;
+     qDebug()<<nameDetail <<" "<<detail.nameDetail<<endl;
+      return nameDetail != detail.nameDetail;
     }
  friend ostream& operator<<(ostream& os, const AbstractDetail&detail)
   {

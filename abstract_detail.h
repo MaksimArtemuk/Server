@@ -24,6 +24,16 @@ public:
     {
       return detail.nameDetail == str;
     }
+  friend  bool operator==(const  AbstractDetail&detail,const  AbstractDetail&detail1)
+    {
+      return detail.nameDetail == detail1.nameDetail;
+    }
+  friend  bool operator!=(const  AbstractDetail&detail,const  AbstractDetail&detail1)
+    {
+     // qDebug()<<"***********";
+     qDebug()<<detail.nameDetail <<" "<<detail1.nameDetail<<endl;
+      return detail.nameDetail != detail1.nameDetail;
+    }
  friend ostream& operator<<(ostream& os, const AbstractDetail&detail)
   {
       os << detail.nameDetail.toStdString() ;

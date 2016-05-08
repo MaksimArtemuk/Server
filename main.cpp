@@ -9,25 +9,46 @@ int main(int argc, char ** argv)
 {
     QApplication app(argc, argv);
     qDebug()<<"99999";
-    Container< AbstractDetail,Allocator<AbstractDetail> > *container=new Container< AbstractDetail,Allocator<AbstractDetail> >("con",PART_COUNT);//Создаем контейнер
-
+    Container< AbstractDetail,Allocator<AbstractDetail> > *container=
+            new Container< AbstractDetail,Allocator<AbstractDetail> >("con",PART_COUNT);//Создаем контейнер
+ Container< AbstractDetail,Allocator<AbstractDetail> > container2("con",PART_COUNT);
     list<AbstractDetail> buses,bodies,transmissions;//Списки деталей
     list<AbstractDetail> *buses1,*bodies1,*transmissions1;
-
+list<AbstractDetail> buses2,bodies2,transmissions2;//Списки деталей
     // Заполняем списки
     buses.push_back(*new Bus("bus1"));
     buses.push_back(*new Bus("bus2"));
     buses.push_back(*new Bus("bus3"));
+    buses.push_back(*new Bus("bus4"));
 
     bodies.push_back(*new Body("body1"));
     bodies.push_back(*new Body("body2"));
     bodies.push_back(*new Body("body3"));
+    bodies.push_back(*new Body("body4"));
 
     transmissions.push_back(*new Transmission("transmission1"));
-    transmissions.push_back(*new Transmission("transmission1"));
-    transmissions.push_back(*new Transmission("transmission1"));
+    transmissions.push_back(*new Transmission("transmission2"));
+    transmissions.push_back(*new Transmission("transmission3"));
+    transmissions.push_back(*new Transmission("transmission4"));
 
-    /*/Bus bas1("ba1"),bas2("ba2"),bas3("ba3");
+
+    buses2.push_back(*new Bus("bus1"));
+    buses2.push_back(*new Bus("bus2"));
+    buses2.push_back(*new Bus("bus3"));
+ buses2.push_back(*new Bus("bus4"));
+
+    bodies2.push_back(*new Body("body1"));
+    bodies2.push_back(*new Body("body2"));
+    bodies2.push_back(*new Body("body3"));
+ bodies2.push_back(*new Body("body4"));
+
+    transmissions2.push_back(*new Transmission("transmission1"));
+    transmissions2.push_back(*new Transmission("transmission2"));
+    transmissions2.push_back(*new Transmission("transmission3"));
+    transmissions2.push_back(*new Transmission("transmission4"));
+
+    /*/
+     * Bus bas1("ba1"),bas2("ba2"),bas3("ba3");
     Body body1("bo1"),body2("bo2"),body3("bo3");
     Transmission tr1("tr1"),tr2("tr2"),tr3("tr3");
     buses.push_back(bas1);
@@ -42,12 +63,19 @@ int main(int argc, char ** argv)
         transmissions.push_back(tr2);
         transmissions.push_back(tr3);/*/
 
-    qDebug()<<"--------Tr";
+    qDebug()<<"--------Tr1";
     container->put(PART_TRANSMISSION,transmissions);
      qDebug()<<"--------Body";
     container->put(PART_BODY, bodies);
      qDebug()<<"--------Bus";
     container->put(PART_BUS,buses);
+
+    qDebug()<<"--------Tr2";
+    container2.put(PART_TRANSMISSION,transmissions2);
+     qDebug()<<"--------Body";
+    container2.put(PART_BODY, bodies2);
+     qDebug()<<"--------Bus";
+    container2.put(PART_BUS,buses2);
 
     transmissions1=   container->get(PART_TRANSMISSION);
     bodies1=   container->get(PART_BODY);
@@ -104,7 +132,7 @@ int main(int argc, char ** argv)
  container->showSubtree(PART_BODY);
  /*/qDebug()<<"///////////////////////";
 /*/
- delete container;
+ //delete container;
 
  transmissions1=   container1.get(PART_TRANSMISSION);
  bodies1=   container1.get(PART_BODY);
@@ -126,6 +154,9 @@ qDebug()<<"--------Buse1s";
     detail.getNameDetail();
  }
 
+ qDebug()<<"------------------isEqu";
+ if(container1==(container2))qDebug()<<"Equ";
+ else qDebug()<<"Not Equ";
   //  ---------------
    // TerminalWindow window;
   //  window.show();

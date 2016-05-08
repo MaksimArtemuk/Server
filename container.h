@@ -92,5 +92,6 @@ public:
         advance(itPrev,numberSubtree);
         return *itPrev;
     }
+    bool operator==(Container &container);
 };
 #endif // CONTAINER_H

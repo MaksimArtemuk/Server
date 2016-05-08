@@ -69,6 +69,35 @@ Container<TypeDetails ,TypeAllocator>::~Container(){
    detailsMap->clear();
 }
 
+template <class TypeDetails ,class TypeAllocator>
+bool Container<TypeDetails ,TypeAllocator>::operator ==(Container &container){
+bool isEcual=true;
+ typename list<list<TypeDetails> *>::iterator leftIt;
+ typename  list<list<TypeDetails> *>::iterator rightIt;
+
+for(leftIt= detailsMap->begin(),rightIt=container. detailsMap->begin();
+    leftIt!=detailsMap->end()&&rightIt!=detailsMap->end()&&
+    isEcual;
+    leftIt++,rightIt++){
+
+    list<TypeDetails> *listLeft=*leftIt;
+    list<TypeDetails> *listRight=*rightIt;
+    typename list<TypeDetails>::iterator listLeftIt;
+    typename list<TypeDetails>::iterator listRightIt;
+
+    for(listLeftIt=listLeft->begin(),listRightIt=listRight->begin();
+        listLeftIt!=listLeft->end()&&listRightIt!=listRight->end()
+        &&
+        isEcual;
+        listLeftIt++,listRightIt++        ){
+
+   if(*listLeftIt!=*listRightIt)isEcual=false;
+    }
+}
+return isEcual;
+
+}
+
 /*/
 template <class TypeDetails,class TypeAllocator>
 const TypeDetails& Container< TypeDetails,TypeAllocator>::findByName(QString name){

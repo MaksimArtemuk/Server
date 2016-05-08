@@ -1,7 +1,4 @@
-#include "container.h"
-#include "abstract_detail.h"
 //---------
-//#include "terminalwindow.h"
 #include "container/container.h"
 #include "hierarchy/bus.h"
 #include "hierarchy/body.h"

@@ -8,8 +8,8 @@ int main(int argc, char ** argv)
 {
     QApplication app(argc, argv);
 
-    TerminalWindow window;
-    window.show();
-   // testContainer();
+   // TerminalWindow window;
+  //  window.show();
+   testContainer();
     return app.exec();
 }

@@ -2,28 +2,26 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    terminalwindow.cpp \
-    treewindow.cpp \
-    detail.cpp \
-    abstract_detail.cpp \
-    allocator.cpp \
-    body.cpp \
-    bus.cpp \
-    container.cpp \
-    salon.cpp \
-    suspension.cpp \
-    transmission.cpp
+    container/allocator.cpp \
+    container/container.cpp \
+    server/terminalwindow.cpp \
+    server/treewindow.cpp \
+    hierarchy/abstract_detail.cpp \
+    hierarchy/body.cpp \
+    hierarchy/bus.cpp \
+    hierarchy/salon.cpp \
+    hierarchy/suspension.cpp \
+    hierarchy/transmission.cpp
 
 HEADERS += \
-    terminalwindow.h \
-    treewindow.h \
-    aotree.h \
-    detail.h \
-    abstract_detail.h \
-    allocator.h \
-    body.h \
-    bus.h \
-    container.h \
-    salon.h \
-    suspension.h \
-    transmission.h
+    container/allocator.h \
+    container/container.h \
+    server/terminalwindow.h \
+    server/treewindow.h \
+    hierarchy/abstract_detail.h \
+    hierarchy/abstract_detail.h.autosave \
+    hierarchy/body.h \
+    hierarchy/bus.h \
+    hierarchy/salon.h \
+    hierarchy/suspension.h \
+    hierarchy/transmission.h

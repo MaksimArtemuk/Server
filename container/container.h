@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <list>
 #include <iostream>
-#include <allocator.h>
+#include "allocator.h"
 using namespace std;
 enum mainPartsCar{PART_BODY,PART_BUS,PART_TRANSMISSION,PART_COUNT};
 //typedef float ulong1;
@@ -92,6 +92,5 @@ public:
         advance(itPrev,numberSubtree);
         return *itPrev;
     }
-    bool operator==(Container &container);
 };
 #endif // CONTAINER_H

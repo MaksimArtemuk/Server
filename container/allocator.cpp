@@ -1,7 +1,7 @@
 #include "allocator.h"
 #include <QDebug>
 #include <iostream>
-#include <abstract_detail.h>
+#include "hierarchy\abstract_detail.h"
 using namespace std;
 template <class TypeDetails>
 Allocator< TypeDetails>::Allocator()
